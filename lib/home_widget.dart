@@ -8,7 +8,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   Color _backgroundColor = CupertinoColors.white;
   Color _textColor = CupertinoColors.black;
 
@@ -22,15 +21,23 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-        child: CupertinoPageScaffold(
-          child: Center(
-              child: RichText(text: TextSpan(text: "Hey There", style: TextStyle(color: _textColor,fontSize: 20)))
-          ),
-          backgroundColor: _backgroundColor
+    return CupertinoPageScaffold(
+        navigationBar: CupertinoNavigationBar(
+          middle: Text('Sample'),
         ),
-        onTap: changeBackgroundColor
-    );
+        child: CupertinoButton(
+            child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                child: Center(
+                  child: Text(
+                    'Hey there',
+                    style: TextStyle(color: _textColor, fontSize: 25),
+                  ),
+                )),
+            color: _backgroundColor,
+            borderRadius: BorderRadius.all(Radius.zero),
+            pressedOpacity: 1.0,
+            onPressed: changeBackgroundColor));
   }
-
 }
